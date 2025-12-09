@@ -7,11 +7,11 @@ export async function createEmployee({ name, birthday, salary }) {
   VALUES ($1, $2, $3)
   RETURNING *;
   `;
-  const params = [name, birthday, salary];
+  //const params = [name, birthday, salary];
 
   const {
     rows: [employee],
-  } = await db.query(sql, params);
+  } = await db.query(sql, [name, birthday, salary]);
   return employee;
 }
 

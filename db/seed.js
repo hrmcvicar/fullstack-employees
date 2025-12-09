@@ -11,7 +11,10 @@ async function seedEmployees() {
   for (let i = 0; i < 10; i++) {
     const fakeEmployee = {
       name: faker.person.fullName(),
-      birthday: faker.date.past({ years: 65 }).toISOString().split("T")[0],
+      birthday: faker.date
+        .birthdate({ min: 22, max: 68, mode: "age" })
+        .toISOString()
+        .split("T")[0],
       salary: faker.number.int({ min: 60000, max: 300000, multipleOf: 100 }),
     };
 
